@@ -6,3 +6,60 @@
 .attribution a {
     color: hsl(228, 45%, 44%);
 }
+
+// colors
+$colors: (
+    $cyan: hsl(171, 66%, 44%),
+    $blue: hsl(233, 100%, 69%),
+    $gray: hsl(201, 11%, 66%),
+    $gray-darken: hsl(210, 10%, 33%),
+);
+
+//breakpoints
+$mobile: 375px;
+$desktop: 1440px;
+
+//functions
+@function getColor($color) {
+    @return map-get($colors, $color);
+}
+
+/* 
+Device ranges
+
+Mobile: 375px
+Desktop: 1440px 
+*/
+
+//Mixins
+@mixin respond($breakpoint) {
+    @if $breakpoint == mobile {
+        @media (max-width: 375px) {
+            @content;
+        }
+    }
+    @if $breakpoint == tablet {
+        @media (min-width: 376px) and (max-width: 1439px) {
+            @content;
+    }
+    @if $breakpoint == desktop {
+        @media (min-width: 1440px) {
+            @content;
+        }
+    }
+}
+
+//Base styles
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Bai Jamjuree", sans-serif;
+}
+
+//Typography
+.paragraph {
+    font-size: 18px; 
+}
